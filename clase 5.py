@@ -1,10 +1,10 @@
 class Paciente:
     def __init__(self):
-        self.__nombre = "juanita"
+        self.__nombre = ""
         self.__cedula = int
         self.__genero = ""
         self.__servicio = ""
-        
+    
     def verNombre(self):
         return self.__nombre
     def verServicio(self):
@@ -42,15 +42,23 @@ class Sistema:
     def ingresarPaciente(self,pac):
         if self.verificarPac(pac.verCedula()):
             return False
-        self.__lista_pacientes.append(pac)
-        return True
-
+        else:
+            self.__lista_pacientes.append(pac)
+            return True
+             
+    
     def verDatosPaciente(self,c):
-        if self.verificarPac(c) == False:
-            return None
-        for p in self.__lista_pacientes:
-            if c == p.verCedula():
-                return p
+        if type(c)==int:
+            for p in self.__lista_pacientes:
+                if c == p.verCedula():
+                    return p
+        else:
+            for p in self.__lista_pacientes:
+                if c.lower() == p.verNombre().lower():
+                    return p
+        return None
+        
+       
     def verNumeroPacientes(self):
         # print("Enel sistema hay: " + str(len(self.__lista_pacientes)) + " pacientes")
         return len(self.__lista_pacientes)
@@ -85,7 +93,7 @@ def main():
 
         elif opcion == 2:
             # 1 solicito la cedula que quiero buscar
-            c = int(input("Ingrese la cedula a buscar: "))
+            c =input("Ingrese la cedula o nombre a buscar: ")
             # le pido al sistema que me devuelva en la variable p al paciente que tenga
             #  la cedula c en la lista
             p = sis.verDatosPaciente(c)
