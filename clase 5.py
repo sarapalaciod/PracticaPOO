@@ -65,8 +65,6 @@ class Sistema:
         
 def main():
     sis = Sistema()
-    sis1 = Sistema()
-    sis2 = Sistema()
     while True:
         opcion = int(input("Ingrese 0 para volver al menu, 1 para ingresar nuevo paciente, 2 ver paciente: , 3 - ver cantidad de pacientes "))
         if opcion == 1:
@@ -83,7 +81,7 @@ def main():
             pac.asignarCedula(cedula)
             pac.asignarGenero(genero)
             pac.asignarServicio(servicio)
-            r = sis2.ingresarPaciente(pac)
+            r = sis.ingresarPaciente(pac)
             # 3 se almacena en la lista que esta dentro de la clase sistema
 
             if r == True:
