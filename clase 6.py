@@ -1,4 +1,4 @@
-import datetime
+import datetime # Importar el módulo
 
 class Medicamento:
     def __init__(self):
