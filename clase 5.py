@@ -48,10 +48,12 @@ class Sistema:
              
     
     def verDatosPaciente(self,c):
+        #se lee que si es tipo entero se asume como cedula y arroja los datos del paciente
         if type(c)==int:
             for p in self.__lista_pacientes:
                 if c == p.verCedula():
                     return p
+        #sino, que sea con el nombre
         else:
             for p in self.__lista_pacientes:
                 if c.lower() == p.verNombre().lower():
